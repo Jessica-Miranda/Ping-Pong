@@ -1,40 +1,58 @@
 {% extends 'base.html.twig' %}
 
 {% block _body %}
-    <h1>Torneo</h1>
-
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ torneo.id }}</td>
-            </tr>
-            <tr>
-                <th>Fecha_inicio</th>
-                <td>{% if torneo.fechainicio %}{{ torneo.fechainicio|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Fecha_fin</th>
-                <td>{% if torneo.fechafin %}{{ torneo.fechafin|date('Y-m-d H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Nombre</th>
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2>
+                    Creación del torneo
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="{{ path('torneo_admin_index') }}">Regresar</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+    <tbody>
+              <tr>
+              <th>Nombre</th>
                 <td>{{ torneo.nombre }}</td>
-            </tr>
+              </tr>
+                <br>
+                <tr>
+                    <th>Fecha de inicio</th>
+                      <td>{% if torneo.fechainicio %}{{ torneo.fechainicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                  <th>Fecha de finalización</th>
+                  <td>{% if torneo.fechafin %}{{ torneo.fechafin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                </tr>
+                <tr>
+                  <th>Id</th>
+                  <td>{{ torneo.id }}</td>
+                </tr>
         </tbody>
     </table>
+    </div>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('torneo_admin_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('torneo_admin_edit', { 'id': torneo.id }) }}">Edit</a>
-        </li>
-        <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Borrar" class="btn btn-primary" style="margin-left: 20px">
+                  <a href="{{ path('torneo_admin_edit', { 'id': torneo.id }) }}" class="btn btn-primary" style="margin-left: 10px">Editar</a>
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+            <br>
+
+
+
+    </div>
+    </div>
 {% endblock _body %}

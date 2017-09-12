@@ -37,7 +37,7 @@
     <link href="{{ asset("bundles/app/css/themes/all-themes.css")}}" rel="stylesheet" />
 </head>
 
-<body class="theme-red">
+<body class="theme-teal">
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -291,10 +291,6 @@
                         <ul class="dropdown-menu pull-right">
                             <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
                             <li role="seperator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">group</i>Followers</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
-                            <li role="seperator" class="divider"></li>
                             <li><a href="{{ url("fos_user_security_logout")}}"><i class="material-icons">input</i>Sign Out</a></li>
                         </ul>
                     </div>
@@ -313,16 +309,19 @@
                     </li>
                     <li>
                         <a href="{{ url("torneo_admin_index")}}">
+                          <i class="material-icons">add_box</i>
                             <span>Crear Torneo</span>
                         </a>
                     </li>
                     <li>
                         <a href="../../index.html">
+                          <i class="material-icons">videogame_asset</i>
                             <span>Torneos</span>
                         </a>
                     </li>
                     <li>
                         <a href="../../index.html">
+                          <i class="material-icons">people</i>
                             <span>Administrar Usuarios</span>
                         </a>
                     </li>

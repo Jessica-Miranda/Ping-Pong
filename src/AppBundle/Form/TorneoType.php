@@ -21,8 +21,9 @@ class TorneoType extends AbstractType
                'html5' => true,
                'widget' => 'single_text'
            ])
-        ->add('fecha_fin', TextType::class, [
-               'attr' => ['class' => 'datetimepicker', 'placeholder' => "Please choose a time..."]
+        ->add('fecha_fin', DateTimeType::class, [
+               'html5' => true,
+               'widget' => 'single_text'
            ])
         ->add('nombre');
     }

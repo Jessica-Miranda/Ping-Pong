@@ -39,7 +39,7 @@
                                 {{ form_widget(form.nombre) }}
                             </div>
                         </div>
-                        <input type="submit" value="Create" class="btn btn-success" />
+                        <input type="submit" value="Crear" class="btn btn-success" />
                         {{ form_end(form) }}
                     </div>
                 </div>
@@ -56,11 +56,11 @@
     jQuery(document).ready(function () {
         $('#appbundle_torneo_fecha_fin').bootstrapMaterialDatePicker
             ({
-                weekStart: 0, format: 'DD/MM/YYYY HH:mm'
+                weekStart: 0, format: 'DD-MM-YYYY HH:mm'
             });
             $('#appbundle_torneo_fecha_inicio').bootstrapMaterialDatePicker
             ({
-                weekStart: 0, format: 'DD/MM/YYYY HH:mm', shortTime : true
+                weekStart: 0, format: 'DD-MM-YYYY HH:mm', shortTime : true
             }).on('change', function(e, date)
             {
                 $('#appbundle_torneo_fecha_fin').bootstrapMaterialDatePicker('setMinDate', date);

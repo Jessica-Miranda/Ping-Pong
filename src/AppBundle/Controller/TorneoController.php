@@ -44,8 +44,6 @@ class TorneoController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            var_dump($request->getContent()); die();
-            //$fechaInicioTemporal = $torneo->
             $em = $this->getDoctrine()->getManager();
             $em->persist($torneo);
             $em->flush();
