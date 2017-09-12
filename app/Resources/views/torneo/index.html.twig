@@ -38,13 +38,10 @@
                                 <td>{% if torneo.fechafin %}{{ torneo.fechafin|date('Y-m-d H:i:s') }}{% endif %}</td>
                                 <td>
 
-
-                                          <a href="{{ path('torneo_admin_show', { 'id': torneo.id }) }}" class="btn btn-primary" >Ver Torneo</a>
-                                          <br>
-                                          <br>
-                                          <a href="{{ path('torneo_admin_edit', { 'id': torneo.id }) }}" class="btn btn-primary" > Editar </a
-
-
+                                  <div class="btn-group" role="group">
+                                    <a href="{{ path('torneo_admin_show', { 'id': torneo.id }) }}" class="btn bg-teal waves-effect">Ver Torneo</a>
+                                    <a href="{{ path('torneo_admin_edit', { 'id': torneo.id }) }}" class="btn bg-teal waves-effect">Editar</a>
+                                                                  </div>
                                 </td>
                             </tr>
                         {% endfor %}

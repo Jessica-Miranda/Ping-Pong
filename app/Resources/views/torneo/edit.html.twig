@@ -1,21 +1,77 @@
 {% extends 'base.html.twig' %}
 
 {% block _body %}
-    <h1>Torneo edit</h1>
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                    <h1>Editar Torneo</h1>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="{{ path('torneo_admin_index') }}">Regresar</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+              {{ form_start(edit_form) }}
+                  {{ form_label(edit_form.fecha_inicio) }}
+                  <div class="form-group">
+                      <div class="form-line">
+                          {{ form_widget(edit_form.fecha_inicio) }}
+                      </div>
 
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
+                      {{ form_label(edit_form.fecha_fin) }}
+                      <div class="form-group">
+                          <div class="form-line">
+                              {{ form_widget(edit_form.fecha_fin) }}
+                          </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('torneo_admin_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                          {{ form_label(edit_form.nombre) }}
+                          <div class="form-group">
+                              <div class="form-line">
+                                  {{ form_widget(edit_form.nombre) }}
+                              </div>
+                          </div>
+
+                  <input type="submit" value="Editar" class="btn bg-teal waves-effect"  />
+              {{ form_end(edit_form) }}
+
+                      {{ form_start(delete_form) }}
+                          <input type="submit" value="Borrar" class="btn bg-teal waves-effect" style="margin-top:10px">
+                      {{ form_end(delete_form) }}
+
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
 {% endblock _body %}
+{% block extraJS %}
+<!-- Moment Plugin Js -->
+<script src="{{ asset("bundles/app/plugins/momentjs/moment.js")}}"></script>
+
+<!-- Bootstrap Material Datetime Picker Plugin Js -->
+<script src="{{ asset("bundles/app/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js")}}"></script>
+<script type="text/javascript">
+jQuery(document).ready(function () {
+    $('#appbundle_torneo_fecha_fin').bootstrapMaterialDatePicker
+        ({
+            weekStart: 0, format: 'DD-MM-YYYY HH:mm'
+        });
+        $('#appbundle_torneo_fecha_inicio').bootstrapMaterialDatePicker
+        ({
+            weekStart: 0, format: 'DD-MM-YYYY HH:mm', shortTime : true
+        }).on('change', function(e, date)
+        {
+            $('#appbundle_torneo_fecha_fin').bootstrapMaterialDatePicker('setMinDate', date);
+        });
+});
+
+</script>
+{% endblock extraJS %}
