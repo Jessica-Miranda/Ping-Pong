@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block _body %}
+    <h1>Torneo</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ torneo.id }}</td>
+            </tr>
+            <tr>
+                <th>Fecha_inicio</th>
+                <td>{% if torneo.fechainicio %}{{ torneo.fechainicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fecha_fin</th>
+                <td>{% if torneo.fechafin %}{{ torneo.fechafin|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Nombre</th>
+                <td>{{ torneo.nombre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('torneo_admin_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('torneo_admin_edit', { 'id': torneo.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock _body %}
