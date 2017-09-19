@@ -38,6 +38,7 @@
 </head>
 
 <body class="theme-teal">
+{% block rootBody %}
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
         <div class="loader">
@@ -281,7 +282,7 @@
             <!-- User Info -->
             <div class="user-info">
                 <div class="image">
-                    <img src="{{ asset("bundles/app/images/user.png")}}" width="48" height="48" alt="User" />
+                    <img src="{{ asset('uploads/avatar/' ~ app.user.avatar)}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.username}}</div>
@@ -289,9 +290,13 @@
                     <div class="btn-group user-helper-dropdown">
                         <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Profile</a></li>
-                            <li role="seperator" class="divider"></li>
-                            <li><a href="{{ url("fos_user_security_logout")}}"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Perfil</a></li>
+                            <li role="seperator" class="divider">
+                            </li>
+                            <li><a href="{{ url("changeAvatar")}}"><i class="material-icons">person</i>Cambiar avatar</a></li>
+                            <li role="seperator" class="divider">
+                            </li>
+                            <li><a href="{{ url("fos_user_security_logout")}}"><i class="material-icons">input</i>Cerrar sesión</a></li>
                         </ul>
                     </div>
                 </div>
@@ -304,7 +309,7 @@
                     <li>
                         <a href="../../index.html">
                             <i class="material-icons">home</i>
-                            <span>Home</span>
+                            <span>Inicio</span>
                         </a>
                     </li>
                     <li>
@@ -351,7 +356,7 @@
             {% endblock _body %}
         </div>
     </section>
-
+{% endblock rootBody %}
     <!-- Jquery Core Js -->
     <script src="{{ asset("bundles/app/plugins/jquery/jquery.min.js")}}"></script>
     <script src="{{ asset("bundles/app/plugins/jquery-datatable/jquery.dataTables.js")}}"></script>

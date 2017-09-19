@@ -1,0 +1,19 @@
+{% extends "::base.html.twig" %}
+{% block rootBody %}
+<!-- Jquery Core Js -->
+<script src="{{ asset("bundles/app/plugins/jquery/jquery.min.js")}}"></script>
+<!-- Bootstrap Core Js -->
+<script src="{{ asset("bundles/app/plugins/bootstrap/js/bootstrap.js")}}"></script>
+<!-- Waves Effect Plugin Js -->
+<script src="{{ asset("bundles/app/plugins/node-waves/waves.js")}}"></script>
+<!-- Validation Plugin Js -->
+<script src="{{ asset("bundles/app/plugins/jquery-validation/jquery.validate.js")}}"></script>
+<!-- Custom Js -->
+<script src="{{ asset("bundles/app/js/admin.js")}}"></script>
+<script src="{{ asset("bundles/app/js/pages/examples/sign-in.js")}}"></script>
+
+    {% block fos_user_content %}
+    {% endblock %}
+{% endblock rootBody %}
+{% block extraJS %}
+{% endblock extraJS %}

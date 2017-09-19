@@ -1,0 +1,62 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% block fos_user_content %}
+    <!-- Login Alternative Row -->
+    <div class="container card">
+        <div class="row body">
+                    <!-- Login Block -->
+                    <div class="block push-bit">
+                        <!-- Login Form -->
+                        <form id="sign_in" action="{{ path("fos_user_security_check") }}" accept-charset="utf-8" method="post" novalidate="novalidate">
+                        <center><div class="msg">
+                            <h1><b>Iniciar Sesión</b></h1>
+                        </div></center>
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                            {% if error %}
+                                <div class="alert alert-dismissable alert-danger">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                    <strong>Error!</strong> {{ error.messageKey|trans(error.messageData, 'security') }}
+                                </div>
+                            {% endif %}
+
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">person</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="text" class="form-control input-lg" placeholder="{{ last_username|default('Usuario') }}" id="username" name="_username">
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                    <i class="material-icons">lock</i>
+                                </span>
+                                <div class="form-line">
+                                    <input type="password" id="password" name="_password" class="form-control input-lg" placeholder="Contraseña">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-8 p-t-5">
+                                    <input type="checkbox" id="login-remember-me" name="_remember_me" checked class="filled-in chk-col-teal">
+                                    <label for="rememberme">Recuérdame</label>
+                                </div>
+                                <div class="col-xs-4">
+                                    <button type="submit" class="btn btn-block bg-teal waves-effect"> Entrar </button>
+                                </div>
+
+                                <div class="row m-t-15 m-b--20">
+                                    <div class="col-xs-6">
+                                        <a href="#">Registrarme ahora!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- END Login Form -->
+                    </div>
+                    <!-- END Login Block -->
+                </div>
+                <!-- END Login Container -->
+
+
+    <!-- END Login Alternative Row -->
+{% endblock %}
