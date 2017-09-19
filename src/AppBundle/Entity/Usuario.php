@@ -36,7 +36,7 @@ class Usuario extends BaseUser
     private $nombreImpresion;
 
     /**
-    * @ORM\Column(type="string")
+    * @ORM\Column(type="string", nullable=true)
     * @Assert\File(mimeTypes={ "image/*" })
     */
     protected $avatar;

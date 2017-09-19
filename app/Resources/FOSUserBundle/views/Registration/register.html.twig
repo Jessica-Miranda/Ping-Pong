@@ -1,12 +1,12 @@
 {% extends "::base.html.twig" %}
+{% block extraClass %}signup-page{% endblock extraClass %}
 {% block extraStyle %}background-image: url({{ asset('bundles/app/fondo2.jpg')}}); background-repeat: no-repeat; background-position: center; background-attachment : fixed; background-size: cover;{% endblock extraStyle %}
 {% block rootBody %}
 {% block fos_user_content %}
-{% endblock %}
+{% include "@FOSUser/Registration/register_content.html.twig" %}
+{% endblock fos_user_content %}
 {% endblock rootBody %}
 {% block extraJS %}
-<!-- Validation Plugin Js -->
 <script src="{{ asset("bundles/app/plugins/jquery-validation/jquery.validate.js")}}"></script>
-<!-- Custom Js -->
-<script src="{{ asset("bundles/app/js/pages/examples/sign-in.js")}}"></script>
+<script src="{{ asset("bundles/app/js/pages/examples/sign-up.js")}}"></script>
 {% endblock extraJS %}

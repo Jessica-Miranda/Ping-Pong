@@ -13,70 +13,68 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class UsuarioType
- * @package AppBundle\Form
- */
+* Class UsuarioType
+* @package AppBundle\Form
+*/
 class UsuarioType extends AbstractType
 {
     /**
-     * @var bool
-     */
+    * @var bool
+    */
     protected $editarCuenta;
 
     /**
-     * @param bool $bool
-     */
+    * @param bool $bool
+    */
     public function __construct($bool = false)
     {
         $this->editarCuenta = $bool;
     }
 
     /**
-     * @param FormBuilderInterface $builder
-     * @param array $options
-     */
+    * @param FormBuilderInterface $builder
+    * @param array $options
+    */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('nombreImpresion', TextType::class, ['label' => 'Name'])
-            ->add('username', TextType::class, ['label' => 'User name'])
-            ->add('email', EmailType::class, ['label' => 'Email'])
-            ->add(
-                'plainPassword',
-                RepeatedType::class,
-                [
-                    'type' => PasswordType::class,
-                    'first_options' => ['label' => 'Password'],
-                    'second_options' => ['label' => 'Confirm password'],
-                    'invalid_message' => 'fos_user.password.mismatch',
-                ]
-            );
+        ->add('nombreImpresion', TextType::class, ['label' => 'Nombre completo'])
+        ->add('username', TextType::class, ['label' => 'Nombre de usuario'])
+        ->add('email', EmailType::class, ['label' => 'Email'])
+        ->add('plainPassword', RepeatedType::class,
+            [
+                'type' => PasswordType::class,
+                'first_options' => ['label' => 'Contraseña'],
+                'second_options' => ['label' => 'Confirme contraseña'],
+                'invalid_message' => 'fos_user.password.mismatch',
+            ]
+        );
 
-        if (!$this->editarCuenta) {
-            $builder
-                ->add('enabled', CheckboxType::class)
-                ->add(
-                    'roles',
-                    ChoiceType::class,
-                    [
-                        'multiple' => true,
-                        'attr' => ['class' => 'select-chosen'],
-                        'choices' => [
-                            'ROLE_SUPER_ADMIN' => 'ROLE_SUPER_ADMIN',
-                            'ROLE_ADMIN' => 'ROLE_ADMIN',
-                            'ROLE_USER' => 'ROLE_USER',
-                            'ROLE_SELLER' => 'ROLE_SELLER',
-                        ],
-                    ]
-                );
-        }
+        // if (!$this->editarCuenta) {
+        //     $builder
+        //     ->add('enabled', CheckboxType::class)
+        //     ->add(
+        //         'roles',
+        //         ChoiceType::class,
+        //         [
+        //             'multiple' => true,
+        //             'attr' => ['class' => 'select-chosen'],
+        //             'choices' => [
+        //                 'ROLE_SUPER_ADMIN' => 'ROLE_SUPER_ADMIN',
+        //                 'ROLE_ADMIN' => 'ROLE_ADMIN',
+        //                 'ROLE_USER' => 'ROLE_USER',
+        //                 'ROLE_SELLER' => 'ROLE_SELLER',
+        //             ],
+        //         ]
+        //     );
+        // }
     }
 
     /**
-     * @param OptionsResolver $resolver
-     */
+    * @param OptionsResolver $resolver
+    */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
@@ -84,12 +82,21 @@ class UsuarioType extends AbstractType
             'intention' => 'registration',
         ));
     }
+    public function getParent()
+    {
+        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+    }
+
+    public function getBlockPrefix()
+    {
+        return 'registration_type';
+    }
 
     /**
-     * @return string
-     */
+    * @return string
+    */
     public function getName()
     {
-        return 'ts_usuario_type';
+        return 'registration_type';
     }
 }

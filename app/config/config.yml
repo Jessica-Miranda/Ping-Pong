@@ -82,5 +82,5 @@ fos_user:
         sender_name: "%mailer_user%"
     user_class: AppBundle\Entity\Usuario
     registration:
-        form:
-            type: ts_usuario_type
+         form:
+            type: AppBundle\Form\UsuarioType

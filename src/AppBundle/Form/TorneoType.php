@@ -20,12 +20,12 @@ class TorneoType extends AbstractType
         ->add('fecha_inicio', DateTimeType::class, [
                'html5' => true,
                'widget' => 'single_text',
-               'format' => 'dd-MM-yyyy hh:mm:ss'
+               'format' => 'dd-MM-yyyy hh:mm'
            ])
         ->add('fecha_fin', DateTimeType::class, [
                'html5' => true,
                'widget' => 'single_text',
-               'format' => 'dd-MM-yyyy hh:mm:ss'
+               'format' => 'dd-MM-yyyy hh:mm'
            ])
         ->add('nombre');
     }

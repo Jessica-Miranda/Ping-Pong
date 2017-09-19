@@ -37,7 +37,7 @@
     <link href="{{ asset("bundles/app/css/themes/all-themes.css")}}" rel="stylesheet" />
 </head>
 
-<body class="theme-teal">
+<body class="{% block extraClass %}theme-teal{% endblock extraClass %}" style="{% block extraStyle %}{% endblock extraStyle %}">
 {% block rootBody %}
     <!-- Page Loader -->
     <div class="page-loader-wrapper">
@@ -280,15 +280,19 @@
         <!-- Left Sidebar -->
         <aside id="leftsidebar" class="sidebar">
             <!-- User Info -->
-            <div class="user-info">
+            <div class="user-info" style="background-image: url({{ asset('bundles/app/fondo2.jpg')}}); background-size: cover;">
                 <div class="image">
                     <img src="{{ asset('uploads/avatar/' ~ app.user.avatar)}}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ app.user.username}}</div>
-                    <div class="email">{{ app.user.email }}</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="font-bold col-black" style="font-size: 150%">{{ app.user.username}}</div>
+                    </div>
+                    <div class="email">
+                    <div class="font-bold col-black" style="font-size: 100%">{{ app.user.email}}</div>
+                    </div>
                     <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"; style="background-color: #a0d4d4";>keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
                             <li><a href="javascript:void(0);"><i class="material-icons">person</i>Perfil</a></li>
                             <li role="seperator" class="divider">
@@ -305,7 +309,7 @@
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li class="header">MENÚ</li>
+                    <li class="header" style="background-color: #009688">MENÚ</li>
                     <li>
                         <a href="../../index.html">
                             <i class="material-icons">home</i>
