@@ -1,47 +1,50 @@
 {% extends '::base.html.twig' %}
-{% block iconHead %}
-    <i class="gi gi-user"></i>
-{% endblock iconHead %}
+{% block _body %}
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <h2 style="font-size: 200%; color: teal">
+                    <b>Administrador de usuarios</b>
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <li class="dropdown">
 
-{% block pageTitle %}
-    Usuarios
-{% endblock pageTitle %}
-{% block subtitle %}
-    Lista
-{% endblock subtitle %}
-
-{% block action %}
-    <div class="block-options pull-right">
-        <a data-original-title="Crear usuario" href="{{ url('crear_usuario') }}" class="btn btn-alt btn-sm btn-success" data-toggle="tooltip" title=""><i class="fa fa-asterisk"></i></a>
-    </div>
-{% endblock action %}
-{% block titlePanel %}Lista{% endblock titlePanel %}
-{% block bodyPanel %}
-    <table id="example-datatable" class="table table-vcenter table-condensed table-bordered">
-        <thead>
-        <tr>
-            <th>Usuario</th>
-            <th>Roles</th>
-            <th>Acciones</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for usuario in usuarios %}
-            <tr>
-                <td>{{ usuario.username }}{% if not usuario.enabled %}<span class="label label-warning">!</span> {% endif %}</td>
-                <td><span class="label label-info"><strong>{{ usuario.roles|join(', ') }}</strong></span></td>
-                <td>
-                    <a href="{{ url('editar_usuario', {'id': usuario.id }) }}" class="btn btn-alt btn-sm btn-success" title="Editar">
-                        <i class="gi gi-pencil"></i>
-                        Editar
-                    </a>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-{% endblock bodyPanel %}
-{% block extraJS %}
-    <script src="{{ asset('bundles/tscya/js/pages/tablesDatatables.js') }}"></script>
-    <script>$(function(){ TablesDatatables.init(); });</script>
-{% endblock extraJS %}
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="{{ path('crear_usuario') }}">Crear usuario</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                        <thead>
+                            <tr>
+                                <th style="font-size: 150%" class="font-bold col-teal"><b>Usuario</b></th>
+                                <th style="font-size: 150%" class="font-bold col-teal"><b>Roles</b></th>
+                                <th style="font-size: 150%" class="font-bold col-teal"><b>Acciones</b></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for usuario in usuarios %}
+                            <tr style="border-color: teal">
+                                <td class="font-bold col-blue-grey" style="font-size: 120%">{{ usuario.username }}{% if not usuario.enabled %}<span class="label bg-blue-cobalto">!</span> {% endif %}</td>
+                                <td><span class="font-bold col-blue-grey"><strong>{{ usuario.roles|join(', ') }}</strong></span></td>
+                                <td>
+                                    <a href="{{ url('editar_usuario', {'id': usuario.id }) }}" class="btn bg-primary waves-effect" title="Editar" style="color: white">
+                                        Editar
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                {% endblock _body %}
+                {% block extraJS %}
+                <script src="{{ asset('bundles/tscya/js/pages/tablesDatatables.js') }}"></script>
+                <script>$(function(){ TablesDatatables.init(); });</script>
+            {% endblock extraJS %}

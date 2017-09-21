@@ -13,10 +13,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
-* Class UsuarioType
+* Class AdminUsuarioType
 * @package AppBundle\Form
 */
-class UsuarioType extends AbstractType
+class AdminUsuarioType extends AbstractType
 {
     /**
     * @param FormBuilderInterface $builder
@@ -37,7 +37,24 @@ class UsuarioType extends AbstractType
                 'second_options' => ['label' => 'Confirme contraseña'],
                 'invalid_message' => 'fos_user.password.mismatch',
             ]
-        );
+        )
+        ->add('enabled', CheckboxType::class, [
+            'required' => false,
+        ])
+        ->add(
+                'roles',
+                ChoiceType::class,
+                [
+                     'multiple' => true,
+                     'attr' => ['class' => 'select-chosen'],
+                    'choices' => [
+                        'ROLE_SUPER_ADMIN' => 'ROLE_SUPER_ADMIN',
+                        'ROLE_ADMIN' => 'ROLE_ADMIN',
+                        'ROLE_USER' => 'ROLE_USER',
+                        'ROLE_SELLER' => 'ROLE_SELLER',
+                    ],
+                ]
+            );
     }
 
     /**
@@ -50,23 +67,11 @@ class UsuarioType extends AbstractType
             'intention' => 'registration',
         ));
     }
-    // No agregar a admin
-    public function getParent()
-    {
-        return 'FOS\UserBundle\Form\Type\RegistrationFormType';
-    }
-
-    // No agregar a admin
-    public function getBlockPrefix()
-    {
-        return 'registration_type';
-    }
-
     /**
     * @return string
     */
     public function getName()
     {
-        return 'registration_type';
+        return 'adminRegistration_type';
     }
 }

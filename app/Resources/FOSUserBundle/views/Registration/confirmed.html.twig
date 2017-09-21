@@ -3,8 +3,28 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-    <p>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</p>
-    {% if targetUrl %}
-    <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
-    {% endif %}
+
+<div class="login-page ls-closed" style="background-color: transparent;">
+    <div class="login-box">
+        <div class="card" style="margin-top: 80px; background-color: #E5F6FB; margin-bottom: 100px">
+            <div class="body">
+                <center>
+                    <h1>
+                        <b>
+                            <div class="msg">Bienvenido a Plusti-Pong!</div>
+                        </b>
+                    </h1>
+                </center>
+                <br/>
+                <div class="col-12">
+                    <a class="btn btn-block bg-teal waves-effect" href="{{ url('changeAvatar') }}" style="color: white; text-decoration: none">Siguiente</a>
+                </div>
+                <br/>
+                <div class="col-12">
+                    <a class="btn btn-block bg-teal waves-effect" href="{{ url('homepage') }}" style="color: white; text-decoration: none">Iniciar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock fos_user_content %}

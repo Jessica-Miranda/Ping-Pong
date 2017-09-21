@@ -31,7 +31,7 @@ class DefaultController extends Controller
     {
         $form = $this->createFormBuilder([])
         ->add('avatar', FileType::class)
-        ->add('save', SubmitType::class, array('label' => 'Create Post'))
+        ->add('save', SubmitType::class, ['label' => 'Cambiar', 'attr' => ["class" => "btn bg-teal waves-effect"]])
         ->getForm();
 
         $form->handleRequest($request);

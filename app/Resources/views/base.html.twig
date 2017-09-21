@@ -76,7 +76,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="../../index.html">PlusTi - Pong</a>
+                <a class="navbar-brand" href="../../index.html" style="font-size: 30px">PlusTi - Pong</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -282,25 +282,25 @@
             <!-- User Info -->
             <div class="user-info" style="background-image: url({{ asset('bundles/app/fondo2.jpg')}}); background-size: cover;">
                 <div class="image">
-                    <img src="{{ asset('uploads/avatar/' ~ app.user.avatar)}}" width="48" height="48" alt="User" />
+                    <img src="{{ asset('uploads/avatar/' ~ app.user.avatar)}}" width="48" height="48" alt="User"/>
                 </div>
                 <div class="info-container">
                     <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <div class="font-bold col-black" style="font-size: 150%">{{ app.user.username}}</div>
+                    <div class="font-bold col-teal label bg-white" style="font-size: 150%; border-radius: 100px">{{ app.user.username}}</div>
                     </div>
                     <div class="email">
-                    <div class="font-bold col-black" style="font-size: 100%">{{ app.user.email}}</div>
+                    <div class="font-bold col-teal label bg-white" style="font-size: 100%; border-radius: 100px">{{ app.user.email}}</div>
                     </div>
                     <div class="btn-group user-helper-dropdown">
-                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"; style="background-color: #a0d4d4";>keyboard_arrow_down</i>
+                        <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"; style="background-color: #009688; border-radius: 20px";>keyboard_arrow_down</i>
                         <ul class="dropdown-menu pull-right">
-                            <li><a href="javascript:void(0);"><i class="material-icons">person</i>Perfil</a></li>
+                            <li><a href="javascript:void(0);" style="color: grey"><i class="material-icons">person</i><b>Perfil</b></a></li>
                             <li role="seperator" class="divider">
                             </li>
-                            <li><a href="{{ url("changeAvatar")}}"><i class="material-icons">person</i>Cambiar avatar</a></li>
+                            <li><a href="{{ url("changeAvatar")}}" style="color: grey"><i class="material-icons">person</i><b>Cambiar avatar</b></a></li>
                             <li role="seperator" class="divider">
                             </li>
-                            <li><a href="{{ url("fos_user_security_logout")}}"><i class="material-icons">input</i>Cerrar sesión</a></li>
+                            <li><a href="{{ url("fos_user_security_logout")}}" style="color: grey"><i class="material-icons">input</i><b>Cerrar sesión</b></a></li>
                         </ul>
                     </div>
                 </div>
@@ -309,29 +309,29 @@
             <!-- Menu -->
             <div class="menu">
                 <ul class="list">
-                    <li class="header" style="background-color: #009688">MENÚ</li>
+                    <li class="header" style="background-color: #009688; color: white">MENÚ</li>
                     <li>
                         <a href="../../index.html">
                             <i class="material-icons">home</i>
-                            <span>Inicio</span>
+                            <span style="color:grey">Inicio</span>
                         </a>
                     </li>
                     <li>
                         <a href="{{ url("torneo_admin_index")}}">
                           <i class="material-icons">add_box</i>
-                            <span>Crear Torneo</span>
+                            <span style="color:grey">Crear Torneo</span>
                         </a>
                     </li>
                     <li>
                         <a href="../../index.html">
                           <i class="material-icons">videogame_asset</i>
-                            <span>Torneos</span>
+                            <span style="color:grey">Torneos</span>
                         </a>
                     </li>
                     <li>
-                        <a href="../../index.html">
+                        <a href="{{ url('lista_usuario') }}">
                           <i class="material-icons">people</i>
-                            <span>Administrar Usuarios</span>
+                            <span style="color:grey">Administrar Usuarios</span>
                         </a>
                     </li>
                 </ul>
@@ -384,11 +384,14 @@
     <!-- Waves Effect Plugin Js -->
     <script src="{{ asset("bundles/app/plugins/node-waves/waves.js")}}"></script>
 
+    <script src="{{ asset("bundles/app/plugins/autosize/autosize.js")}}"></script>
+
+    <script src="{{ asset("bundles/app/plugins/momentjs/moment.js")}}"></script>
+
     <!-- Custom Js -->
     <script src="{{ asset("bundles/app/js/admin.js")}}"></script>
-
     <!-- Demo Js -->
-    <script src="{{ asset("bundles/app/js/demo.js")}}"></script>
+    <!-- <script src="{{ asset("bundles/app/js/demo.js")}}"></script> -->
 
     {% block extraJS %}
     {% endblock extraJS %}
