@@ -10,6 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use AppBundle\Entity\ListVS;
 
 /**
 * Torneo controller.
@@ -18,6 +19,20 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 */
 class TorneoController extends Controller
 {
+    /**
+    * @Route("/complete/list", name="torneo_admin_complete_list")
+    * @Method({"GET", "POST"})
+    */
+    public function completeListAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $torneos = $em->getRepository('AppBundle:Torneo')->findAll();
+
+        return $this->render('torneo/completeList.html.twig', array(
+            'torneos' => $torneos,
+        ));
+    }
     /**
     * Creates a new torneo entity.
     *
@@ -38,7 +53,7 @@ class TorneoController extends Controller
                 return strtoupper($users->getNombreImpresion());
             },
         ])
-        ->add('save', SubmitType::class)
+        ->add('save', SubmitType::class, ['label' => 'Asignar', 'attr' => ["class" => "btn bg-primary btn-lg", "style" => "color: white"]])
         ->getForm();
 
         $form->handleRequest($request);
@@ -46,11 +61,19 @@ class TorneoController extends Controller
         if ($form->isSubmitted()) {
             $arrUsers = $form->getData()['users'];
             $numeroDeUsuarios = count($arrUsers);
-            if ($numeroDeUsuarios%2==0) {
+            if ($numeroDeUsuarios % 2 === 0 ) {
+                $em = $this->getDoctrine()->getManager();
+                for($i = 0; $i < $numeroDeUsuarios; $i = $i + 2) {
+                    $usera = $arrUsers[$i];
+                    $userb = $arrUsers[$i + 1];
 
-
-                $fechaInicio = $torneo->getFechaInicio();
-                $fechaFin = $torneo->getFechaFin();
+                    $listVs = new ListVS();
+                    $listVs->setUserA($usera);
+                    $listVs->setUserB($userb);
+                    $listVs->setTorneo($torneo);
+                    $em->persist($listVs);
+                    $em->flush();
+                }
 
                 return $this->redirectToRoute('torneo_admin_index');
             }

@@ -38,19 +38,9 @@ class ListVS
     protected $user_b;
 
     /**
-    * @ORM\Column(name="order", type="integer")
-    */
-    protected $order;
-
-    /**
-    * @ORM\Column(name="punteo", type="integer")
+    * @ORM\Column(name="punteo", type="integer", nullable=true)
     */
     protected $punteo;
-
-    /**
-    * @ORM\Column(name="fecha", type="datetime")
-    */
-    protected $fecha;
 
     /**
     * @ORM\ManyToOne(targetEntity="Torneo", inversedBy="lists")
@@ -69,56 +59,6 @@ class ListVS
     }
 
     /**
-     * Get the value of User a
-     *
-     * @return mixed
-     */
-    public function getUserA()
-    {
-        return $this->user_a;
-    }
-
-    /**
-     * Get the value of User b
-     *
-     * @return mixed
-     */
-    public function getUserB()
-    {
-        return $this->user_b;
-    }
-
-    /**
-     * Get the value of Order
-     *
-     * @return mixed
-     */
-    public function getOrder()
-    {
-        return $this->order;
-    }
-
-    /**
-     * Get the value of Punteo
-     *
-     * @return mixed
-     */
-    public function getPunteo()
-    {
-        return $this->punteo;
-    }
-
-    /**
-     * Get the value of Fecha
-     *
-     * @return mixed
-     */
-    public function getFecha()
-    {
-        return $this->fecha;
-    }
-
-    /**
      * Set the value of Id
      *
      * @param mixed id
@@ -130,6 +70,16 @@ class ListVS
         $this->id = $id;
 
         return $this;
+    }
+
+    /**
+     * Get the value of User a
+     *
+     * @return mixed
+     */
+    public function getUserA()
+    {
+        return $this->user_a;
     }
 
     /**
@@ -147,6 +97,16 @@ class ListVS
     }
 
     /**
+     * Get the value of User b
+     *
+     * @return mixed
+     */
+    public function getUserB()
+    {
+        return $this->user_b;
+    }
+
+    /**
      * Set the value of User b
      *
      * @param mixed user_b
@@ -161,17 +121,13 @@ class ListVS
     }
 
     /**
-     * Set the value of Order
+     * Get the value of Punteo
      *
-     * @param mixed order
-     *
-     * @return self
+     * @return mixed
      */
-    public function setOrder($order)
+    public function getPunteo()
     {
-        $this->order = $order;
-
-        return $this;
+        return $this->punteo;
     }
 
     /**
@@ -184,20 +140,6 @@ class ListVS
     public function setPunteo($punteo)
     {
         $this->punteo = $punteo;
-
-        return $this;
-    }
-
-    /**
-     * Set the value of Fecha
-     *
-     * @param mixed fecha
-     *
-     * @return self
-     */
-    public function setFecha($fecha)
-    {
-        $this->fecha = $fecha;
 
         return $this;
     }
