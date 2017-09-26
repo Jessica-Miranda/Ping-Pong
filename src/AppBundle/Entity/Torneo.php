@@ -31,12 +31,12 @@ class Torneo
     protected $lists;
 
     /**
-    * @ORM\Column(name="fecha_inicio", type="datetime")
+    * @ORM\Column(name="fecha_inicio", type="date")
     */
     protected $fecha_inicio;
 
     /**
-    * @ORM\Column(name="fecha_fin", type="datetime")
+    * @ORM\Column(name="fecha_fin", type="date")
     */
     protected $fecha_fin;
 
@@ -44,6 +44,16 @@ class Torneo
     * @ORM\Column(name="nombre", type="string")
     */
     protected $nombre;
+
+    /**
+    * @ORM\Column(name="puntos", type="integer")
+    */
+    protected $puntos;
+
+    /**
+    * @ORM\Column(name="sets", type="integer")
+    */
+    protected $sets;
 
     public function __construct()
     {
@@ -76,46 +86,46 @@ class Torneo
     }
 
     /**
-     * Get the value of Id
-     *
-     * @return mixed
-     */
+    * Get the value of Id
+    *
+    * @return mixed
+    */
     public function getId()
     {
         return $this->id;
     }
 
     /**
-     * Set the value of Id
-     *
-     * @param mixed id
-     *
-     * @return self
-     */
+    * Set the value of Id
+    *
+    * @param mixed id
+    *
+    * @return self
+    */
     public function setId($id)
     {
         $this->id = $id;
 
         return $this;
     }
- 
+
     /**
-     * Get the value of Fecha Inicio
-     *
-     * @return mixed
-     */
+    * Get the value of Fecha Inicio
+    *
+    * @return mixed
+    */
     public function getFechaInicio()
     {
         return $this->fecha_inicio;
     }
 
     /**
-     * Set the value of Fecha Inicio
-     *
-     * @param mixed fecha_inicio
-     *
-     * @return self
-     */
+    * Set the value of Fecha Inicio
+    *
+    * @param mixed fecha_inicio
+    *
+    * @return self
+    */
     public function setFechaInicio($fecha_inicio)
     {
         $this->fecha_inicio = $fecha_inicio;
@@ -124,22 +134,22 @@ class Torneo
     }
 
     /**
-     * Get the value of Fecha Fin
-     *
-     * @return mixed
-     */
+    * Get the value of Fecha Fin
+    *
+    * @return mixed
+    */
     public function getFechaFin()
     {
         return $this->fecha_fin;
     }
 
     /**
-     * Set the value of Fecha Fin
-     *
-     * @param mixed fecha_fin
-     *
-     * @return self
-     */
+    * Set the value of Fecha Fin
+    *
+    * @param mixed fecha_fin
+    *
+    * @return self
+    */
     public function setFechaFin($fecha_fin)
     {
         $this->fecha_fin = $fecha_fin;
@@ -148,25 +158,73 @@ class Torneo
     }
 
     /**
-     * Get the value of Nombre
-     *
-     * @return mixed
-     */
+    * Get the value of Nombre
+    *
+    * @return mixed
+    */
     public function getNombre()
     {
         return $this->nombre;
     }
 
     /**
-     * Set the value of Nombre
-     *
-     * @param mixed nombre
-     *
-     * @return self
-     */
+    * Set the value of Nombre
+    *
+    * @param mixed nombre
+    *
+    * @return self
+    */
     public function setNombre($nombre)
     {
         $this->nombre = $nombre;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Puntos
+     *
+     * @return mixed
+     */
+    public function getPuntos()
+    {
+        return $this->puntos;
+    }
+
+    /**
+     * Get the value of Sets
+     *
+     * @return mixed
+     */
+    public function getSets()
+    {
+        return $this->sets;
+    }
+
+    /**
+     * Set the value of Puntos
+     *
+     * @param mixed puntos
+     *
+     * @return self
+     */
+    public function setPuntos($puntos)
+    {
+        $this->puntos = $puntos;
+
+        return $this;
+    }
+
+    /**
+     * Set the value of Sets
+     *
+     * @param mixed sets
+     *
+     * @return self
+     */
+    public function setSets($sets)
+    {
+        $this->sets = $sets;
 
         return $this;
     }

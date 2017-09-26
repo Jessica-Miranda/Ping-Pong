@@ -30,15 +30,23 @@
                 <br>
                 <tr>
                     <th>Fecha de inicio</th>
-                      <td>{% if torneo.fechainicio %}{{ torneo.fechainicio|date('Y-m-d H:i:s') }}{% endif %}</td>
+                      <td>{% if torneo.fechainicio %}{{ torneo.fechainicio|date('Y-m-d') }}{% endif %}</td>
                 </tr>
                 <tr>
                   <th>Fecha de finalización</th>
-                  <td>{% if torneo.fechafin %}{{ torneo.fechafin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                  <td>{% if torneo.fechafin %}{{ torneo.fechafin|date('Y-m-d') }}{% endif %}</td>
                 </tr>
                 <tr>
                   <th>Id</th>
                   <td>{{ torneo.id }}</td>
+                </tr>
+                <tr>
+                    <th>Cantidad de sets</th>
+                    <td>{{ torneo.sets }}</td>
+                </tr>
+                <tr>
+                    <th>Punteo por set</th>
+                    <td>{{ torneo.puntos }}</td>
                 </tr>
         </tbody>
     </table>
@@ -46,8 +54,12 @@
     </div>
 
             {{ form_start(delete_form) }}
-                <input type="submit" value="Borrar" class="btn bg-teal waves-effect" style="margin-left: 20px">
-                  <a href="{{ path('torneo_admin_edit', { 'id': torneo.id }) }}" class="btn bg-teal waves-effect" style="margin-left: 10px">Editar</a>
+            <a href="{{ path('torneo_admin_edit', { 'id': torneo.id }) }}">
+            <button type="submit" class="btn bg-teal waves-effect" style="margin-top: 10px; margin-left: 20px">
+                          <i class="material-icons">edit</i>
+                          <span>Editar</span>
+                      </button>
+            </a>
             {{ form_end(delete_form) }}
             <br>
 

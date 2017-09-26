@@ -27,6 +27,8 @@
                                 <th>Nombre</th>
                                 <th>Fecha de inicio</th>
                                 <th>Fecha de finalización</th>
+                                <th>Cantidad de sets</th>
+                                <th>Punteo por set</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
@@ -34,12 +36,15 @@
                         {% for torneo in torneos %}
                             <tr>
                                 <td><a href="{{ path('torneo_admin_show', { 'id': torneo.id }) }}">{{ torneo.nombre }}</a></td>
-                                <td>{% if torneo.fechainicio %}{{ torneo.fechainicio|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                <td>{% if torneo.fechafin %}{{ torneo.fechafin|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td>{% if torneo.fechainicio %}{{ torneo.fechainicio|date('Y-m-d') }}{% endif %}</td>
+                                <td>{% if torneo.fechafin %}{{ torneo.fechafin|date('Y-m-d') }}{% endif %}</td>
+                                <td>{{ torneo.sets }}</td>
+                                <td>{{ torneo.puntos }}</td>
                                 <td>
 
                                   <div class="btn-group" role="group">
                                     <a href="{{ path('torneo_admin_show', { 'id': torneo.id }) }}" class="btn bg-teal waves-effect">Ver Torneo</a>
+                                    <a href="{{ path('torneo_admin_users', { 'id': torneo.id }) }}" class="btn bg-teal waves-effect">Asignar jugadores</a>
                                     <a href="{{ path('torneo_admin_edit', { 'id': torneo.id }) }}" class="btn bg-teal waves-effect">Editar</a>
                                                                   </div>
                                 </td>

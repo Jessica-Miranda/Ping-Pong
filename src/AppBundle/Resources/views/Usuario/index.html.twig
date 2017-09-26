@@ -35,8 +35,11 @@
                                 <td class="font-bold col-blue-grey" style="font-size: 120%">{{ usuario.username }}{% if not usuario.enabled %}<span class="label bg-blue-cobalto">!</span> {% endif %}</td>
                                 <td><span class="font-bold col-blue-grey"><strong>{{ usuario.roles|join(', ') }}</strong></span></td>
                                 <td>
-                                    <a href="{{ url('editar_usuario', {'id': usuario.id }) }}" class="btn bg-primary waves-effect" title="Editar" style="color: white">
-                                        Editar
+                                    <a href="{{ url('editar_usuario', {'id': usuario.id }) }}">
+                                    <button type="submit" class="btn bg-primary waves-effect" style="color: white">
+                                                  <i class="material-icons">edit</i>
+                                                  <span>Editar</span>
+                                              </button>
                                     </a>
                                 </td>
                             </tr>

@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block _body %}
+
+    {{form(form)}}
+
+    <a href="{{ path('torneo_admin_index') }}">
+    <button type="submit" class="btn bg-primary waves-effect" style="margin-top: 10px; color: white">
+                  <i class="material-icons">arrow_back</i>
+                  <span>Regresar</span>
+              </button>
+    </a>
+
+    <button type="submit" class="btn bg-primary waves-effect" style="color: white" name="save">
+                  <i class="material-icons">done</i>
+                  <span>Asignar</span>
+              </button>
+
+
+{% endblock _body %}

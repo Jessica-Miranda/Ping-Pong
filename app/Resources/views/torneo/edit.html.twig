@@ -38,11 +38,30 @@
                               </div>
                           </div>
 
-                  <input type="submit" value="Editar" class="btn bg-teal waves-effect"  />
+                          <label>Cantidad de Sets</label>
+                          <div class="form-group">
+                              <div class="form-line">
+                                  {{form_widget(edit_form.sets)}}
+                              </div>
+                          </div>
+
+                          <label>Puntos por set</label>
+                          <div class="form-group">
+                              <div class="form-line">
+                                  {{ form_widget(edit_form.puntos) }}
+                              </div>
+                          </div>
+                          <button type="submit" class="btn bg-teal waves-effect" style="margin-top: 10px">
+                                        <i class="material-icons">edit</i>
+                                        <span>Editar</span>
+                                    </button>
               {{ form_end(edit_form) }}
 
                       {{ form_start(delete_form) }}
-                          <input type="submit" value="Borrar" class="btn bg-teal waves-effect" style="margin-top:10px">
+                      <button type="submit" class="btn bg-red waves-effect" style="margin-top: 10px">
+                                    <i class="material-icons">delete</i>
+                                    <span>Borrar</span>
+                                </button>
                       {{ form_end(delete_form) }}
 
                     </div>
@@ -62,11 +81,11 @@
 jQuery(document).ready(function () {
     $('#appbundle_torneo_fecha_fin').bootstrapMaterialDatePicker
         ({
-            weekStart: 0, format: 'DD-MM-YYYY HH:mm'
+            weekStart : 0, time: false, format: 'DD-MM-YYYY'
         });
         $('#appbundle_torneo_fecha_inicio').bootstrapMaterialDatePicker
         ({
-            weekStart: 0, format: 'DD-MM-YYYY HH:mm'
+            weekStart : 0, time: false, format: 'DD-MM-YYYY'
         }).on('change', function(e, date)
         {
             $('#appbundle_torneo_fecha_fin').bootstrapMaterialDatePicker('setMinDate', date);
