@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+{% block _body %}
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                    <h2 style="font-size: 200%; color: teal"><b>Inserción de punteo</b></h2>
+                <ul class="header-dropdown m-r--5">
+                </ul>
+            </div>
+            <div class="body">
+                {{ form_start(form) }}
+                    {{ form_label(form.punteo_a) }}
+                    <div class="form-group">
+                        <div class="form-line">
+                            {{ form_widget(form.punteo_a) }}
+                        </div>
+
+                        {{ form_label(form.punteo_b) }}
+                        <div class="form-group">
+                            <div class="form-line">
+                                {{ form_widget(form.punteo_b) }}
+                            </div>
+
+
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+    <a href="{{ path('torneo_admin_complete_list')}}">
+    <button type="submit" class="btn bg-primary waves-effect" style="margin-left: 20px; margin-bottom: 20px; color: white; margin-top: -20px">
+                  <i class="material-icons">arrow_back</i>
+                  <span>Regresar</span>
+              </button>
+    </a>
+</div>
+{% endblock _body %}

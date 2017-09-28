@@ -7,14 +7,6 @@
             <div class="header">
                     <h2 style="font-size: 200%; color: teal"><b>Editar Torneo</b></h2>
                 <ul class="header-dropdown m-r--5">
-                    <li class="dropdown">
-                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            <i class="material-icons">more_vert</i>
-                        </a>
-                        <ul class="dropdown-menu pull-right">
-                            <li><a href="{{ path('torneo_admin_index') }}">Regresar</a></li>
-                        </ul>
-                    </li>
                 </ul>
             </div>
             <div class="body">
@@ -56,18 +48,24 @@
                                         <span>Editar</span>
                                     </button>
               {{ form_end(edit_form) }}
-
                       {{ form_start(delete_form) }}
                       <button type="submit" class="btn bg-red waves-effect" style="margin-top: 10px">
                                     <i class="material-icons">delete</i>
                                     <span>Borrar</span>
                                 </button>
                       {{ form_end(delete_form) }}
-
                     </div>
                 </div>
+                <a href="{{ path('torneo_admin_index')}}">
+                <button type="submit" class="btn bg-teal waves-effect">
+                              <i class="material-icons">arrow_back</i>
+                              <span>Regresar</span>
+                          </button>
+                </a>
             </div>
             </div>
+        </div>
+        </div>
 
 
 {% endblock _body %}

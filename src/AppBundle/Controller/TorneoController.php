@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use AppBundle\Entity\ListVS;
 
@@ -19,6 +20,37 @@ use AppBundle\Entity\ListVS;
 */
 class TorneoController extends Controller
 {
+    /**
+    * Creates a new torneo entity.
+    *
+    * @Route("/punteos/{id}", name="torneo_admin_punteos")
+    * @ParamConverter("listVs", class="AppBundle\Entity\ListVS")
+    * @Method({"GET", "POST"})
+    */
+    public function punteosAction(Request $request, ListVS $listVs)
+    {
+        $form = $this->createFormBuilder([])
+        ->add('punteo_a', NumberType::class, ['label' => 'Punteo de ' . $listVs->getUserA()->getNombreImpresion(), 'attr' => ["class" => "font-bold"]])
+        ->add('punteo_b', NumberType::class, ['label' => 'Punteo de ' . $listVs->getUserB()->getNombreImpresion(), 'attr' => ["class" => "font-bold"]])
+        ->add('save', SubmitType::class, ['label' => 'Asignar', 'attr' => ["class" => "btn bg-primary btn-lg", "style" => "color: white"]])
+        ->getForm();
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+            $dataForm = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $listVs->setUserAPunteo($dataForm['punteo_a']);
+            $listVs->setUserBPunteo($dataForm['punteo_b']);
+            $em->flush();
+
+            return $this->redirectToRoute('torneo_admin_complete_list');
+        }
+
+        return $this->render('torneo/punteos.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
     /**
     * @Route("/complete/list", name="torneo_admin_complete_list")
     * @Method({"GET", "POST"})

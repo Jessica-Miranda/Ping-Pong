@@ -37,7 +37,6 @@ class Usuario extends BaseUser
 
     /**
     * @ORM\Column(type="string", nullable=true)
-    * @Assert\File(mimeTypes={ "image/*" })
     */
     protected $avatar;
 
