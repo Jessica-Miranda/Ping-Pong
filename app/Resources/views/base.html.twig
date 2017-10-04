@@ -88,8 +88,6 @@
                         <div class="btn-group user-helper-dropdown">
                             <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"; style="background-color: #009688; border-radius: 20px";>keyboard_arrow_down</i>
                             <ul class="dropdown-menu pull-right">
-                                <li><a href="javascript:void(0);" style="color: grey"><i class="material-icons">person</i><b>Perfil</b></a></li>
-                                <li role="seperator" class="divider">
                                 </li>
                                 <li><a href="{{ url("changeAvatar")}}" style="color: grey"><i class="material-icons">person</i><b>Cambiar avatar</b></a></li>
                                 <li role="seperator" class="divider">
@@ -122,25 +120,20 @@
                                 <span style="color:grey">Torneos</span>
                             </a>
                         </li>
+                        {% if is_granted('ROLE_ADMIN') %}
+
                         <li>
                             <a href="{{ url('lista_usuario') }}">
                                 <i class="material-icons">people</i>
                                 <span style="color:grey">Administrar Usuarios</span>
                             </a>
                         </li>
+
+                        {% endif %}
                     </ul>
                 </div>
 
-                {% if is_granted('ROLE_ADMIN') %}
 
-                <li>
-                    <a href="{{ url('lista_usuario') }}">
-                        <i class="material-icons">people</i>
-                        <span style="color:grey">Administrar Usuarios</span>
-                    </a>
-                </li>
-
-                {% endif %}
                 <!-- #Menu -->
                 <!-- Footer -->
                 <div class="legal">

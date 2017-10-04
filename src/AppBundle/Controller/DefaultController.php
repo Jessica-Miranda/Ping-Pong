@@ -18,8 +18,11 @@ class DefaultController extends Controller
     */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return [];
+        $em = $this->getDoctrine()->getManager();
+
+        $torneos = $em->getRepository('AppBundle:Torneo')->findAll();
+
+        return ['torneos' => $torneos];
     }
 
     /**

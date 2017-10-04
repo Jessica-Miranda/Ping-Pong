@@ -44,15 +44,11 @@
                                             <div class="image">
                                                 <img src="{{ asset('uploads/avatar/' ~ listVS.userA.avatar)}}" width="48" height="48"  style="border-radius: 40px;"/>
                                             </div>
-                                            <strong>{{ listVS.userA.nombreImpresion }}</strong>
-                                        </td>
-                                        <td style="font-size: 100%;">
-                                            <b>
-                                                Punteo
+                                            <center><strong>{{ listVS.userA.nombreImpresion }}</strong>
                                                 <br>
-                                                <center>{{ listVS.getUserAPunteo }}</center>
-                                            </b>
+                                            <b>{{ listVS.getUserAPunteo }}Pts.</b></center>
                                         </td>
+
                                         <td style="font-size: 100%; text-align: center">
                                             <b>Vs.</b>
                                         </td>
@@ -60,20 +56,16 @@
                                             <div class="image">
                                                 <img src="{{ asset('uploads/avatar/' ~ listVS.userB.avatar)}}" width="48" height="48"  style="border-radius: 40px;"/>
                                             </div>
-                                            <strong>{{ listVS.userB.nombreImpresion }}</strong>
-                                        </td>
-                                        <td style="font-size: 100%;">
-                                            <b>
-                                                Punteo
+                                            <center><strong>{{ listVS.userB.nombreImpresion }}</strong>
                                                 <br>
-                                                <center>{{ listVS.getUserBPunteo }}</center>
-                                            </b>
+                                            <b>{{ listVS.getUserBPunteo }}Pts.</b></center>
                                         </td>
                                         <td>
                                             <a href="{{ path('torneo_admin_punteos', { 'id': listVS.id }) }}" class="btn bg-teal waves-effect">
                                                 Punteo
                                             </a>
                                         </td>
+
                                     </table>
                                     {% endfor %}
                                 </td>
