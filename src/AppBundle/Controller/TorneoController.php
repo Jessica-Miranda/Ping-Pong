@@ -108,6 +108,11 @@ class TorneoController extends Controller
                 }
 
                 return $this->redirectToRoute('torneo_admin_index');
+            } else {
+                $this->addFlash(
+                    'error',
+                    'Por favor, asigne una cantidad par de jugadores!'
+                );
             }
 
         }

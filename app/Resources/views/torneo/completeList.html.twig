@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 {% block _body %}
-
 <div class="row clearfix">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <div class="card">
@@ -42,7 +41,7 @@
                                     <table>
                                         <td style="font-size: 100%;">
                                             <div class="image">
-                                                <img src="{{ asset('uploads/avatar/' ~ listVS.userA.avatar)}}" width="48" height="48"  style="border-radius: 40px;"/>
+                                                <center><img src="{{ asset('uploads/avatar/' ~ listVS.userA.avatar)}}" width="48" height="48"  style="border-radius: 40px;"/></center>
                                             </div>
                                             <center><strong>{{ listVS.userA.nombreImpresion }}</strong>
                                                 <br>
@@ -54,17 +53,22 @@
                                         </td>
                                         <td style="font-size: 100%">
                                             <div class="image">
-                                                <img src="{{ asset('uploads/avatar/' ~ listVS.userB.avatar)}}" width="48" height="48"  style="border-radius: 40px;"/>
+                                                <center><img src="{{ asset('uploads/avatar/' ~ listVS.userB.avatar)}}" width="48" height="48"  style="border-radius: 40px;"/></center>
                                             </div>
                                             <center><strong>{{ listVS.userB.nombreImpresion }}</strong>
                                                 <br>
                                             <b>{{ listVS.getUserBPunteo }}Pts.</b></center>
                                         </td>
+                                        {% if is_granted('ROLE_ADMIN') %}
+
                                         <td>
                                             <a href="{{ path('torneo_admin_punteos', { 'id': listVS.id }) }}" class="btn bg-teal waves-effect">
                                                 Punteo
                                             </a>
                                         </td>
+
+                                        {% endif %}
+
 
                                     </table>
                                     {% endfor %}
